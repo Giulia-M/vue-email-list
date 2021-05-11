@@ -1,29 +1,30 @@
 new Vue({
     el: "#app",
     data: {
-        emailLista: []
+        emailLista: [],
+        loopTimes: 10
     },
     methods: {
         loadEmail() {
-            const loopTimes = 10
-            const ajaxList = []
-
-
-            for (let index = 0; index < loopTimes; index++) {
+            this.emailLista = []
+    
+            for (let index = 0; index < this.loopTimes; index++) {
 
                 axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
                     .then((resp) => {
 
-                        ajaxList.push(resp.data.response)
+                        this.emailLista.push(resp.data.response)
                         //  console.log(resp.data.response)
                         //  debugger
 
-                        if (ajaxList.length === loopTimes) {
-                            this.emailLista.push(...ajaxList)
+                        // if (ajaxList.length === loopTimes) {
+                        //     this.emailLista.push(...ajaxList)
 
-                        }
+                        // }
                     })
+
             }
+          
         }
     },
     mounted() {

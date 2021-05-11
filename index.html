@@ -13,7 +13,7 @@
     <div id="app">
         <h2 style="text-align: center; color: brown;">Indirizzi email:</h2>
         <button @click="loadEmail">Mostra</button>
-        <ol>
+        <ol v-if="emailLista.length % loopTimes  === 0">
             <li v-for= "email in emailLista"> {{email}}</li>
         </ol>
     </div>
